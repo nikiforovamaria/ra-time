@@ -9,18 +9,24 @@ function DateTime(props) {
 }
 
 function Video(props) {
-  const NewDateTime = DateTimePretty(DateTime);
     return (
         <div className="video">
-            <iframe src={props.url} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            {/* <DateTime date={props.date} /> */}
-            <NewDateTime date={props.date} />
+               <iframe
+                title="Video title"
+                src={props.url}
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                 ></iframe>
+            <DateTime date={props.date} />
         </div>
     )
 }
 
+const VideoDate = DateTimePretty(Video);
+
 function VideoList(props) {
-    return props.list.map(item => <Video url={item.url} date={item.date} />);
+    return props.list.map(item => <VideoDate url={item.url} date={item.date} />);
 }
 
 export default function App() {

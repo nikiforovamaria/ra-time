@@ -1,12 +1,11 @@
 import React from 'react';
-import moment from 'moment/min/moment-with-locales';
+import moment from 'moment';
+import 'moment/locale/ru';
 
 export default function DateTimePretty(Component) {
-  return class extends React.Component {
-    render() {
-      moment.lang('ru');
-      const data = moment(this.props.date);
-      return <Component date={data.fromNow()}/>;
-    }
-  };
+  function NewDateTime(props) {
+    const date = moment(props.date, 'YYYYMMDDhhmm').fromNow()
+    return <Component url={props.url} date={date} />
+  }
+  return NewDateTime;
 }
